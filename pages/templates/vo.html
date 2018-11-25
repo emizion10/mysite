@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Orders</title>
+
+	  <style>
+table, th, td {
+
+
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c1;
+}
+table#t01 th {
+    background-color: grey;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<section class="page-section">
+  <div class="container" style="width:40%">
+<div class="bg-faded p-5 d-flex ml-auto rounded">
+<h1 class="section-heading mb-0">
+<span class="section-heading-lower" width="50%" height="50%" text>ORDERS</span>
+</h1>
+</div>
+<br>
+
+{% for n in order_list %}
+<table id="t01" style="width:100%">
+<!-- <tr> -->
+
+<tr>
+<th>Student:</th>
+<td>{{ n.owner.student}}</td>
+
+</tr>
+<tr>
+<th>Order ID:</th>
+<td>{{ n.pk}}</td>
+
+</tr>
+<tr>
+	<th><a class="btn btn-danger" href="{% url 'order_detail' pk=n.pk %}">Checkout</a></th>
+
+</tr>
+
+<!--
+<tr>
+<th>Item:</th>
+<td>{{ n.i_id}}</td>
+
+</tr>
+
+<tr>
+<th>Quantity:</th>
+<td>{{ n.quantity_order}}</td>
+</tr>
+<tr>
+<th>Amount:</th>
+<td>{{ n.amount}}</td>
+</tr>
+ -->
+
+</table>
+<p></p>
+{% endfor %}
+</section>
+
+
+</body>
+</html>
+{%  endblock %}

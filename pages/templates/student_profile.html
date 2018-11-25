@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Profile</title>
+
+	  <style>
+table, th, td {
+
+
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c1;
+}
+table#t01 th {
+    background-color: grey;
+    color: white;
+}
+</style>
+</head>
+<body>
+
+<section class="page-section">
+  <div class="container" style="width:40%">
+<div class="bg-faded p-5 d-flex ml-auto rounded">
+<h1 class="section-heading mb-0">
+<span class="section-heading-lower" width="50%" height="50%" text>PROFILE</span>
+</h1>
+</div>
+
+  <table id="t01" style="width:100%">
+  <!-- <tr> -->
+<tr>
+	<th>ID</th>
+	<td>{{ student.stud}}</td>
+
+</tr>
+<tr>
+	<th>NAME</th>
+	<td>{{ student.name}}</td>
+
+</tr>
+<tr>
+	<th>EMAIL</th>
+	<td>{{ student.email}}</td>
+
+</tr>
+<tr>
+	<th>PHONE NO.</th>
+	<td>{{student.ph_no}}</td>
+
+</tr>
+
+<tr>
+	<th>AMOUNT</th>
+	<td>{{ student.bill}}</td>
+
+</tr>
+
+</table>
+
+<br><br>
+
+<b> <h2 style="color:#069" class="text-center">Order History</h2> </b>
+{% for n in order_list %}
+<table id="t01" style="width:100%">
+<!-- <tr> -->
+<tr>
+<th>Order ID</th>
+<td>{{ n.pk}}</td>
+
+</tr>
+
+<tr>
+<th>Item</th>
+<td>{{ n.i_id}}</td>
+
+</tr>
+
+<tr>
+<th>Quantity</th>
+<td>{{ n.quantity_order}}</td>
+</tr>
+<tr>
+<th>Amount</th>
+<td>{{ n.amount}}</td>
+</tr>
+<tr>
+<th>Date</th>
+<td>{{ n.enter_date}}</td>
+</tr>
+<tr>
+<th>Status</th>
+{% if n.status %}
+<td><span style="font-family: wingdings; font-size: 200%;">&#252;</span></td>
+{% else %}
+<td><span style="font-family: wingdings; font-size: 200%;">&#x2717;</span></td>
+{% endif %}
+</tr>
+
+
+</table>
+<p></p>
+{% endfor %}
+</section>
+
+</body>
+</html>
+{%  endblock %}

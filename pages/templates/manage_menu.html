@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>order</title>
+  <style>
+table, th, td {
+
+
+}
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+table#t01 {
+    width: 100%;
+    background-color: #f1f1c1;
+}
+table#t01 th {
+    background-color: grey;
+    color: white;
+}
+</style>
+<link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+
+<section class="page-section">
+  <div class="container" style="width:40%">
+<div class="bg-faded p-5 d-flex ml-auto rounded">
+<h1 class="section-heading mb-0">
+<span class="section-heading-lower" width="50%" height="50%" text>MENU&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a class="btn btn-danger" href="{% url 'create_menu' %}">Add Item</a></span>
+</h1>
+</div>
+
+  <table id="t01" style="width:100%">
+  <tr>
+    <th>ITEMS</th>
+    <th>PRICE</th>
+    <th>AVAILABLE</th>
+    <th></th>
+  </tr>
+  {% for menu in menu_list %}
+  <tr>
+    <td>{{ menu.item_name }}</td>
+    <td>{{ menu.price }}</td>
+    <td>{{ menu.qty }}</td>
+    <td><a class="btn btn-success" href="{% url 'update_menu' pk=menu.pk %}">Edit</a></td>
+  </tr>
+{% endfor %}
+</table>
+
+<div>
+
+<div>
+</section>
+
+{%  endblock %}
